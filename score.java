@@ -1,7 +1,7 @@
 public class score {
 
     private int score;
-    public void getScore()
+    public int getScore()
     {
         return score;
     }
