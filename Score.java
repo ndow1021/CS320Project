@@ -1,4 +1,4 @@
-public class score {
+public class Score {
 
     private int score;
     public int getScore()
@@ -9,6 +9,14 @@ public class score {
     {
         this.score = score;
     }
+
+    public void updateScore(int addedValue)
+    {
+        setScore(score + addedValue);
+
+    }
+
+
 
 
 
