@@ -16,6 +16,11 @@ public class Score {
 
     }
 
+    public int calculateScore()
+    {
+        return score;
+    }
+
 
 
 
