@@ -1,0 +1,157 @@
+body
+{
+    background-color: #89CFF0;
+}
+
+
+title
+{
+    text-align: center;
+}
+
+.PageHeader{
+    font-size: 20px;
+    Background-color: white;
+    padding : 01px;
+    color: #89CFF0;
+    text-align: center;
+}
+
+.links {
+    overflow: hidden;
+    background-color: pink;
+}
+
+.links a {
+    background-color: pink;
+    color: gray;
+    float: left;
+    text-align: center;
+    padding: 10px 50px;
+}
+
+.links a:hover {
+    background-color: gray;
+    color: pink;
+}
+
+
+.QStart
+{
+    border: 2px solid orange;
+    background-color: yellow;
+    color: orange;
+    text-align: center;
+    width: 450px;
+    position: absolute;
+    left: 711px;
+    top: 500px;
+}
+
+.QStart:hover
+{
+    background-color: orange;
+    color: yellow;
+    border: 2px solid yellow;
+}
+
+.message{
+    color: orange;
+    text-decoration-line: underline;
+}
+
+.questions{
+    color: yellow;
+}
+
+.answer1
+{
+    font-size: 30px;
+    background-color: #66FF99;
+    color: white;
+    margin: 50px;
+    border: 2px solid green;
+    border-radius: 100px;
+    padding: 0px;
+    text-align: center;
+    width: 450px;
+    position: absolute;
+    top: 250px;
+    left: 150px;
+}
+
+.answer1:hover {
+    background-color: #CBC3E3;
+    color: white;
+    border-radius: 100px;
+    border: 2px solid purple;
+}
+
+.answer2
+{
+    font-size: 30px;
+    background-color: #66FF99;
+    color: white;
+    margin: 50px;
+    border: 2px solid green;
+    border-radius: 100px;
+    padding: 0px;
+    text-align: center;
+    width: 450px;
+    position: absolute;
+    top: 250px;
+    left: 650px;
+}
+
+.answer2:hover {
+    background-color: #CBC3E3;
+    color: white;
+    border-radius: 100px;
+    border: 2px solid purple;
+}
+
+.answer3
+{
+    font-size: 30px;
+    background-color: #66FF99;
+    color: white;
+    margin: 50px;
+    border: 2px solid green;
+    border-radius: 100px;
+    padding: 0px;
+    text-align: center;
+    width: 450px;
+    position: absolute;
+    top: 500px;
+    left: 150px;
+}
+
+.answer3:hover {
+    background-color: #CBC3E3;
+    color: white;
+    border-radius: 100px;
+    border: 2px solid purple;
+}
+
+.answer4
+{
+    font-size: 30px;
+    background-color: #66FF99;
+    color: white;
+    margin: 50px;
+    border: 2px solid green;
+    border-radius: 100px;
+    padding: 0px;
+    text-align: center;
+    width: 450px;
+    position: absolute;
+    top: 500px;
+    left: 650px;
+}
+
+.answer4:hover {
+    background-color: #CBC3E3;
+    color: white;
+    border-radius: 100px;
+    border: 2px solid purple;
+}
