@@ -210,20 +210,14 @@ public class SQLDemo {
 			}
 			
 			List<String> row = new ArrayList<String>();
-			// DJH2-3-12-17: changed tokenizer to '|' so that comma's can be embedded in titles
+
 			StringTokenizer tok = new StringTokenizer(line, "|");
 			while (tok.hasMoreTokens()) {
 				row.add(tok.nextToken());
 			}
 			if (stmt == null) {
 				StringBuilder buf = new StringBuilder();
-// DJH2: Added the code below to specifically allow importCSV to use auto-increment primary keys for books and authors in Derby
-// DJH2: Removed the primary key columns from books.csv and authors.csv, since they will now be auto-generated				
-// DJH2: This is definitely a kludge to get importCSV to work with Derby for Lab04
-// DJH2: What really needs to be done is that the column names should be read from the CSV file,
-// DJH2: and then substituted into the 'insert' statement
-// DJH2-3-12-17: Added 'published' as an attribute of books table
-// DJH2-3-12-17: changed attributes to 'lastname' and 'firstname' for authors table
+
 				System.out.println("Importing data for table: <" + tableName + ">");
 				if (tableName.toLowerCase().equals("books"))
 				{
@@ -233,8 +227,9 @@ public class SQLDemo {
 				{
 					buf.append("insert into " + tableName + " (lastname, firstname) values (");
 				}
-// DJH2: this is the original code - it will not import into a table with an auto-incrementing primary key
-// DJH2: The primary key values must be manually determined and included in the CSV file.
+
+
+
 				else
 				{
 					buf.append("insert into " + tableName + " values (");					
