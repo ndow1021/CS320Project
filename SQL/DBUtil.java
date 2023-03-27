@@ -5,6 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
+
+
+//DO NOT TOUCH THIS CLASS!!!!
+
+
+
+
 /**
  * Some database utility functions.
  */
@@ -23,7 +31,7 @@ public abstract class DBUtil {
 			}
 		}
 	}
-
+//DO NOT TOUCH THIS CLASS!!!!
 	/**
 	 * Attempt to close a ResultSet.
 	 * 
@@ -38,7 +46,7 @@ public abstract class DBUtil {
 			}
 		}
 	}
-
+//DO NOT TOUCH THIS CLASS!!!!
 	/**
 	 * Attempt to close a Connection.
 	 * 
