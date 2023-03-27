@@ -11,7 +11,7 @@
     <servlet-class>edu.ycp.cs320.lab02.servlet.IndexServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>AddNumbersServlet</servlet-name>
+    <servlet-name>LoginScreenServlet</servlet-name>
     <servlet-class>edu.ycp.cs320.lab02.servlet.AddNumbersServlet</servlet-class>
   </servlet>
   <servlet>
