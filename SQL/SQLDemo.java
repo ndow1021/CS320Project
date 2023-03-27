@@ -1,4 +1,4 @@
-package edu.ycp.cs320.sqldemo;
+package SQL;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -52,7 +52,7 @@ public class SQLDemo {
 }
 
 	private static void queryLoop(Connection conn) throws IOException {
-		StatementReader stmtReader = new StatementReader(new InputStreamReader(System.in));
+		StatementReader stmtReader = new SQL.StatementReader(new InputStreamReader(System.in));
 
 		boolean done = false;
 		while (!done) {
