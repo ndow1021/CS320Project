@@ -34,7 +34,7 @@
   </servlet>
    <servlet>
     <servlet-name>MultiplyNumbersAjaxServlet</servlet-name>
-    <servlet-class>edu.ycp.cs320.lab02.servlet.ajax.MultiplyNumbersAjaxServlet</servlet-class>
+    <servlet-class>edu.ycp.cs320.lab02.servlet.ajax.LoginAjaxServlet</servlet-class>
   </servlet>
 
   <!-- Servlet mappings -->
