@@ -1,5 +1,10 @@
 import javax.swing.text.html.HTMLDocument;
 
+
+
+
+
+
 public class Quiz {
 
 
@@ -35,15 +40,15 @@ public class Quiz {
 
     public void saveAsPDF()
     {
-        // Load input HTML file from URL
-        //HTMLDocument document = new HTMLDocument("QuizResults.html");
+       /* // Load input HTML file from URL
+        HTMLDocument document = new HTMLDocument("https://www.aspose.com/");
 
-        // Initialize PdfSaveOptions class object
-        // PdfSaveOptions options = new PdfSaveOptions();
+        // Initialize PdfSaveOptions class object and set the encryption properties
+        PdfSaveOptions options = new PdfSaveOptions();
+        options.setEncryption(new PdfEncryptionInfo("user", "owner", PdfPermissions.PrintDocument, PdfEncryptionAlgorithm.RC4_128));
 
-
-        // Save webpage as PDF in Java
-        //Converter.convertHTML(document, options, "URLtoPDF.pdf");
+        // Save output PDF file with encryption
+        Converter.convertHTML(document, options, "URLtoPDF_encrypted.pdf");*/
     }
 
 
