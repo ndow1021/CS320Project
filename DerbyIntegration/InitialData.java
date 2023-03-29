@@ -11,7 +11,7 @@ import edu.ycp.cs320.booksdb.model.Book;
 public class InitialData {
 	public static List<Author> getAuthors() throws IOException {
 		List<Author> authorList = new ArrayList<Author>();
-		ReadCSV readAuthors = new ReadCSV("authors.csv");
+		edu.ycp.cs320.booksdb.persist.ReadCSV readAuthors = new edu.ycp.cs320.booksdb.persist.ReadCSV("authors.csv");
 		try {
 			// auto-generated primary key for authors table
 			Integer authorId = 1;
@@ -33,7 +33,7 @@ public class InitialData {
 		}
 	}
 	
-	public static List<Book> getBooks() throws IOException {
+	public static <ReadCSV> List<Book> getBooks() throws IOException {
 		List<Book> bookList = new ArrayList<Book>();
 		ReadCSV readBooks = new ReadCSV("books.csv");
 		try {

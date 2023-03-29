@@ -9,7 +9,7 @@ import edu.ycp.cs320.booksdb.model.Author;
 import edu.ycp.cs320.booksdb.model.Book;
 import edu.ycp.cs320.booksdb.model.Pair;
 
-public class FakeDatabase implements IDatabase {
+public class FakeDatabase implements edu.ycp.cs320.booksdb.persist.IDatabase {
 	
 	private List<Author> authorList;
 	private List<Book> bookList;
@@ -27,8 +27,8 @@ public class FakeDatabase implements IDatabase {
 
 	public void readInitialData() {
 		try {
-			authorList.addAll(InitialData.getAuthors());
-			bookList.addAll(InitialData.getBooks());
+			authorList.addAll(edu.ycp.cs320.booksdb.persist.InitialData.getAuthors());
+			bookList.addAll(edu.ycp.cs320.booksdb.persist.InitialData.getBooks());
 		} catch (IOException e) {
 			throw new IllegalStateException("Couldn't read initial data", e);
 		}

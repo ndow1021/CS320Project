@@ -13,7 +13,7 @@ import edu.ycp.cs320.booksdb.model.Author;
 import edu.ycp.cs320.booksdb.model.Book;
 import edu.ycp.cs320.booksdb.model.Pair;
 
-public class DerbyDatabase implements IDatabase {
+public class DerbyDatabase implements edu.ycp.cs320.booksdb.persist.IDatabase {
 	static {
 		try {
 			Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
