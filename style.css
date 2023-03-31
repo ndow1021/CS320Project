@@ -19,11 +19,11 @@ title
 
 .links {
     overflow: hidden;
-    background-color: pink;
+    background-color: #3d3d3d;
 }
 
 .links a {
-    background-color: pink;
+    background-color: #3d3d3d;
     color: gray;
     float: left;
     text-align: center;
