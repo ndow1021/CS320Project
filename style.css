@@ -55,19 +55,20 @@ title
 }
 
 .message{
-    color: orange;
+    color: black;
     text-decoration-line: underline;
 }
 
 .questions{
-    color: yellow;
+    color: black;
+    font-size: 20px;
 }
 
 .answer1
 {
     font-size: 30px;
     background-color: #66FF99;
-    color: white;
+    color: black;
     margin: 50px;
     border: 2px solid green;
     border-radius: 100px;
@@ -81,7 +82,7 @@ title
 
 .answer1:hover {
     background-color: #CBC3E3;
-    color: white;
+    color: black;
     border-radius: 100px;
     border: 2px solid purple;
 }
@@ -90,7 +91,7 @@ title
 {
     font-size: 30px;
     background-color: #66FF99;
-    color: white;
+    color: black;
     margin: 50px;
     border: 2px solid green;
     border-radius: 100px;
@@ -104,7 +105,7 @@ title
 
 .answer2:hover {
     background-color: #CBC3E3;
-    color: white;
+    color: black;
     border-radius: 100px;
     border: 2px solid purple;
 }
@@ -113,7 +114,7 @@ title
 {
     font-size: 30px;
     background-color: #66FF99;
-    color: white;
+    color: black;
     margin: 50px;
     border: 2px solid green;
     border-radius: 100px;
@@ -127,7 +128,7 @@ title
 
 .answer3:hover {
     background-color: #CBC3E3;
-    color: white;
+    color: black;
     border-radius: 100px;
     border: 2px solid purple;
 }
@@ -136,7 +137,7 @@ title
 {
     font-size: 30px;
     background-color: #66FF99;
-    color: white;
+    color: black;
     margin: 50px;
     border: 2px solid green;
     border-radius: 100px;
@@ -150,7 +151,7 @@ title
 
 .answer4:hover {
     background-color: #CBC3E3;
-    color: white;
+    color: black;
     border-radius: 100px;
     border: 2px solid purple;
 }
