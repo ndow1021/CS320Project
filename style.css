@@ -86,6 +86,12 @@ title
     border-radius: 100px;
     border: 2px solid purple;
 }
+.answer1:target {
+    background-color: #CBC3E3;
+    color: black;
+    border-radius: 100px;
+    border: 2px solid purple;
+}
 
 .answer2
 {
@@ -110,6 +116,12 @@ title
     border: 2px solid purple;
 }
 
+.answer2:target {
+    background-color: #CBC3E3;
+    color: black;
+    border-radius: 100px;
+    border: 2px solid purple;
+}
 .answer3
 {
     font-size: 30px;
@@ -132,7 +144,12 @@ title
     border-radius: 100px;
     border: 2px solid purple;
 }
-
+.answer3:target {
+    background-color: #CBC3E3;
+    color: black;
+    border-radius: 100px;
+    border: 2px solid purple;
+}
 .answer4
 {
     font-size: 30px;
@@ -150,6 +167,41 @@ title
 }
 
 .answer4:hover {
+    background-color: #CBC3E3;
+    color: black;
+    border-radius: 100px;
+    border: 2px solid purple;
+}
+.answer4:focus {
+    background-color: #CBC3E3;
+    color: black;
+    border-radius: 100px;
+    border: 2px solid purple;
+}
+
+.nextQuestion
+{
+    font-size: 30px;
+    background-color: #66FF99;
+    color: black;
+    margin: 50px;
+    border: 2px solid green;
+    border-radius: 100px;
+    padding: 0px;
+    text-align: center;
+    width: 450px;
+    position: absolute;
+    top: 750px;
+    left: 400px;
+}
+
+.nextQuestion:hover {
+    background-color: #CBC3E3;
+    color: black;
+    border-radius: 100px;
+    border: 2px solid purple;
+}
+.nextQuestion:focus {
     background-color: #CBC3E3;
     color: black;
     border-radius: 100px;
