@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>Login Screen (AJAX)</title>
+		
+		<script
+			src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+			type="text/javascript">
+		</script>
+		
+		<style type="text/css">
+		td.label {
+			text-align: right;
+			font-weight: bold;
+		}
+		
+		.error {
+			color: red;
+		}
+		</style>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#multiplyNumbersButton").click(function() {
+					$.ajax({
+						type: 'POST',
+						url: '/lab12/ajax/multiplyNumbers',
+						data: { first: $("#emailElt").val(), second: $("#passwordElt").val()}
+						success:
+							function(data, textStatus, jqXHR) {
+								$("#resultElt").text(data);
+							},
+						error:
+							function(jqXHR, textStatus, errorThrown) {
+								$("#errorElt").text(textStatus + ": " + errorThrown);
+							},
+						dataType: 'text'
+					});
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<table>
+			<tr>
+				<td class="label">Email:</td>
+				<td><input id="emailElt" type="text" size="12" /></td>
+			</tr>
+			<tr>
+				<td class="label">Password:</td>
+				<td><input id="passwordElt" type="text" size="12" /></td>
+			</tr>
+
+		</table>
+		<div>
+			<button id="LoginButton">Login</button>
+		</div>
+		<div>
+			<span id="errorElt" class="error"></span>
+		</div>
+	</body>
+</html>

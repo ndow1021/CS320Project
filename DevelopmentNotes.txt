@@ -1,0 +1,2 @@
+1|Jessica Lee|Mother|F|0|0
+UserID|Name|Mother/Father|ChildGender|LastScore|CurrentScore
