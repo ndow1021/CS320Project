@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class callname {
     public static void main(String[] args) throws Exception {
         // load Derby JDBC driver
-
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
         } catch (Exception e) {
