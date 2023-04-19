@@ -7,5 +7,5 @@ import edu.ycp.cs320.booksdb.model.Book;
 import edu.ycp.cs320.booksdb.model.Pair;
 
 public interface IDatabase {
-	public List<Pair<Author, Book>> findAuthorAndBookByTitle(String title);
+	//public List<Pair<email, password>> findAuthorAndBookByTitle(String title);
 }
