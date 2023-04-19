@@ -22,15 +22,25 @@ import java.util.regex.Pattern;
  */
 public class SQLDemo {
 	static class RowList extends ArrayList<List<String>> {
-		private static final long serialVersionUID = 1L;
+
+		private static final int MAX_ATTEMPTS = 10;
 	}
-	
-	private static final String PAD =
+	// Attempt to load derby driver
+	static  String PAD =
 		"                                                    " +
 		"                                                    " +
 		"                                                    " +
 		"                                                    ";
-	private static final String SEP =
+	// Attempt to load derby driver
+	static {
+		try {
+			Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+		} catch (Exception e) {
+			throw new IllegalStateException("Could not load Derby driver");
+		}
+	}
+
+			private static final String SEP =
 		"----------------------------------------------------" +
 		"----------------------------------------------------" +
 		"----------------------------------------------------" +
