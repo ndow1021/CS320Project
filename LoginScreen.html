@@ -4,6 +4,26 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="UTF-8">
     <title>Login Screen</title>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#multiplyNumbersButton").click(function() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/lab12/ajax/multiplyNumbers',
+                    data: { first: $("#emailElt").val(), second: $("#passwordElt").val()}
+                    success:
+                        function(data, textStatus, jqXHR) {
+                            $("#resultElt").text(data);
+                        },
+                    error:
+                        function(jqXHR, textStatus, errorThrown) {
+                            $("#errorElt").text(textStatus + ": " + errorThrown);
+                        },
+                    dataType: 'text'
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="PageHeader">
@@ -24,7 +44,23 @@
 
     </div>
     <br></br>
+    <table>
+        <tr>
+            <td class="label">Email:</td>
+            <td><input id="emailElt" type="text" size="12" /></td>
+        </tr>
+        <tr>
+            <td class="label">Password:</td>
+            <td><input id="passwordElt" type="text" size="12" /></td>
+        </tr>
 
+    </table>
+    <div>
+        <button id="LoginButton">Login</button>
+    </div>
+    <div>
+        <span id="errorElt" class="error"></span>
+    </div>
 
 
 
