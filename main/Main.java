@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		String webappCodeBase = "./war";
 		File warFile = new File(webappCodeBase);
-		Launcher launcher = new Launcher();
+		edu.ycp.cs320.lab02.main.Launcher launcher = new edu.ycp.cs320.lab02.main.Launcher();
 		
 		// get a server for port 8081
 		System.out.println("CREATING: web server on port 8081");
