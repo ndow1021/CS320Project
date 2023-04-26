@@ -1,30 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login Screen</title>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $("#multiplyNumbersButton").click(function() {
-        $.ajax({
-          type: 'POST',
-          url: '/lab12/ajax/multiplyNumbers',
-          data: { first: $("#emailElt").val(), second: $("#passwordElt").val()}
-          success:
-                  function(data, textStatus, jqXHR) {
-                    $("#resultElt").text(data);
-                  },
-          error:
-                  function(jqXHR, textStatus, errorThrown) {
-                    $("#errorElt").text(textStatus + ": " + errorThrown);
-                  },
-          dataType: 'text'
-        });
-      });
-    });
-  </script>
   <style>
     body {font-family: Arial, Helvetica, sans-serif;}
 
@@ -40,8 +17,8 @@
 
     /* Set a style for all buttons */
     button {
-      background-color: #d57486;
-      color: #ffffff;
+      background-color: #ff00dc;
+      color: white;
       padding: 14px 20px;
       margin: 8px 0;
       border: none;
@@ -66,11 +43,11 @@
       margin: 24px 0 12px 0;
       position: relative;
     }
-    /*
-        img.avatar {
-          width: 40%;
-          border-radius: 50%;
-        }*/
+/*
+    img.avatar {
+      width: 40%;
+      border-radius: 50%;
+    }*/
 
     .container {
       padding: 16px;
@@ -98,7 +75,7 @@
 
     /* Modal Content/Box */
     .modal-content {
-      background-color: #a8c9d7;
+      background-color: #7cc3f5;
       margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
       border: 1px solid #888;
       width: 80%; /* Could be more or less, depending on screen size */
@@ -147,43 +124,19 @@
       }
     }
   </style>
-
-
-
 </head>
 <body>
-<div class="PageHeader">
-  <h1>Login Page</h1>
-</div>
 
+<h2>PPD Login</h2>
 
-<div class="links">
-
-  <a href="Welcomepage.html">Welcome Page</a>
-  <a href="Question1.html">Question 1</a>
-  <a href="QuizBeginningScreen.html">Quiz Start Screen</a>
-  <a href="Resources.html">Resources</a>
-  <a href="About.html">About us page</a>
-  <a href="QuizResults.html">Quiz Results</a>
-  <a href="LoginScreen.html">Login Screen</a>
-  <a href="LoginTestPage.html">Login Test</a>
-  <a href="Question10TEST.html">Question 10 TEST</a>
-
-</div>
-<br></br>
-
-
-<div>
-  <span id="errorElt" class="error"></span>
-</div>
-<button onclick="document.getElementById('id01').style.display='block'" style="width:1000px;height:400px;font-size:50px;text-align: center">Click Here To Login</button>
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
 <div id="id01" class="modal">
 
   <form class="modal-content animate" action="/action_page.php" method="post">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-
+      <img src="baby.png" alt="Logo" class="avatar">
     </div>
 
     <div class="container">
@@ -193,18 +146,19 @@
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
 
-      <button type="submit" style="font-size: 25px">Login</button>
+      <button type="submit">Login</button>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
     </div>
 
-    <div class="container" style="background-color:white">
+    <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
       <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
   </form>
 </div>
+
 <script>
   // Get the modal
   var modal = document.getElementById('id01');
@@ -216,7 +170,6 @@
     }
   }
 </script>
-
 
 </body>
 </html>
