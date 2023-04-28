@@ -39,7 +39,7 @@ public class QuizAjaxServlet extends HttpServlet {
         // If an action was specified, use a GuessingGameController to carry it out
         String action = req.getParameter("action");
         if (action != null) {
-            GuessingGameController controller = new GuessingGameController();
+            QuizController controller = new QuizController();
             controller.setModel(model);
 
             if (action.equals("less")) {

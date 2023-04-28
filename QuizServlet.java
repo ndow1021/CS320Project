@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class QuizServlet extends HttpServlet {
-import java.io.IOException;
+
     private static final long serialVersionUID = 1L;
 
     @Override

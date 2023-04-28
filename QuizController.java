@@ -19,5 +19,6 @@ public class QuizController {
     }
 
 
-
+    public void startQuiz() {
+    }
 }
