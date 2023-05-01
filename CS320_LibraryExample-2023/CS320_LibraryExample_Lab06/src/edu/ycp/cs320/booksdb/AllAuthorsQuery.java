@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import edu.ycp.cs320.booksdb.model.Author;
 import edu.ycp.cs320.booksdb.persist.DatabaseProvider;
-import edu.ycp.cs320.booksdb.persist.IDatabase;
+import edu.ycp.cs320.booksdb.persist.idatabase;
 
 public class AllAuthorsQuery {
 	public static void main(String[] args) throws Exception {
@@ -15,7 +15,7 @@ public class AllAuthorsQuery {
 		InitDatabase.init(keyboard);
 		
 		// get the DB instance and execute transaction
-		IDatabase db = DatabaseProvider.getInstance();
+		idatabase db = DatabaseProvider.getInstance();
 		List<Author> authorList = db.findAllAuthors();
 		
 		// check if anything was returned and output the list

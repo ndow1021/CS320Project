@@ -1,55 +1,50 @@
-package edu.ycp.cs320.booksdb.persist;
+package DerbyIntegration;
+
+import model.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import edu.ycp.cs320.booksdb.model.Author;
-import edu.ycp.cs320.booksdb.model.Book;
-import edu.ycp.cs320.booksdb.model.Pair;
-
-public class FakeDatabase implements edu.ycp.cs320.booksdb.persist.IDatabase {
+public class FakeDatabase implements IDatabase {
 	
-	private List<Author> authorList;
-	private List<Book> bookList;
+	private List<User> userList;
+
 	
 	public FakeDatabase() {
-		authorList = new ArrayList<Author>();
-		bookList = new ArrayList<Book>();
+		userList = new ArrayList<User>();
+
 		
 		// Add initial data
 		readInitialData();
 		
-		System.out.println(authorList.size() + " authors");
-		System.out.println(bookList.size() + " books");
+		System.out.println(userList.size() + " user");
+
 	}
 
 	public void readInitialData() {
 		try {
-			authorList.addAll(edu.ycp.cs320.booksdb.persist.InitialData.getAuthors());
-			bookList.addAll(edu.ycp.cs320.booksdb.persist.InitialData.getBooks());
+			userList.addAll(DerbyIntegration.InitialData.getUser());
 		} catch (IOException e) {
 			throw new IllegalStateException("Couldn't read initial data", e);
 		}
 	}
-	
+
+	// query that retrieves all Authors from DB
 	@Override
-	public List<Pair<Author, Book>> findAuthorAndBookByTitle(String title) {
-		List<Pair<Author, Book>> result = new ArrayList<Pair<Author,Book>>();
-		for (Book book : bookList) {
-			if (book.getTitle().equals(title)) {
-				Author author = findAuthorByAuthorId(book.getAuthorId());
-				result.add(new Pair<Author, Book>(author, book));
-			}
+	public List<User> findAllUsers() {
+		List<User> result = new ArrayList<User>();
+		for (User user : userList) {
+			result.add(user);
 		}
 		return result;
 	}
 
-	private Author findAuthorByAuthorId(int authorId) {
-		for (Author author : authorList) {
-			if (author.getAuthorId() == authorId) {
-				return author;
+
+	private User findUserByUserId(int userId) {
+		for (User user : userList) {
+			if (user.getUserId() == userId) {
+				return user;
 			}
 		}
 		return null;

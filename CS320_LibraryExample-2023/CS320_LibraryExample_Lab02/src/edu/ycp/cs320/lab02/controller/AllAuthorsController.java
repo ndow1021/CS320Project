@@ -6,11 +6,11 @@ import java.util.List;
 import edu.ycp.cs320.booksdb.model.Author;
 import edu.ycp.cs320.booksdb.persist.DatabaseProvider;
 import edu.ycp.cs320.booksdb.persist.DerbyDatabase;
-import edu.ycp.cs320.booksdb.persist.IDatabase;
+import edu.ycp.cs320.booksdb.persist.idatabase;
 
 public class AllAuthorsController {
 
-	private IDatabase db = null;
+	private idatabase db = null;
 
 	public AllAuthorsController() {
 		

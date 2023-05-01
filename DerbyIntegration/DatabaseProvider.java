@@ -1,13 +1,13 @@
-package edu.ycp.cs320.booksdb.persist;
+package DerbyIntegration;
 
 public class DatabaseProvider {
-	private static edu.ycp.cs320.booksdb.persist.IDatabase theInstance;
-	
-	public static void setInstance(edu.ycp.cs320.booksdb.persist.IDatabase db) {
+	private static IDatabase theInstance;
+
+	public static void setInstance(IDatabase db) {
 		theInstance = db;
 	}
-	
-	public static edu.ycp.cs320.booksdb.persist.IDatabase getInstance() {
+
+	public static IDatabase getInstance() {
 		if (theInstance == null) {
 			throw new IllegalStateException("IDatabase instance has not been set!");
 		}

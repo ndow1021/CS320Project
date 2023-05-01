@@ -1,4 +1,4 @@
-package edu.ycp.cs320.booksdb.persist;
+package DerbyIntegration;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,11 +9,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.ycp.cs320.booksdb.model.Author;
-import edu.ycp.cs320.booksdb.model.Book;
-import edu.ycp.cs320.booksdb.model.Pair;
+import DerbyIntegration.InitialData;
+import model.User;
+import model.Pair;
 
-public class DerbyDatabase implements edu.ycp.cs320.booksdb.persist.IDatabase {
+
+public class DerbyDatabase implements IDatabase {
 	static {
 		try {
 			Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -28,60 +29,7 @@ public class DerbyDatabase implements edu.ycp.cs320.booksdb.persist.IDatabase {
 
 	private static final int MAX_ATTEMPTS = 10;
 
-	@Override
-	public List<Pair<Author, Book>> findAuthorAndBookByTitle(final String title) {
-		return executeTransaction(new Transaction<List<Pair<Author,Book>>>() {
-			@Override
-			public List<Pair<Author, Book>> execute(Connection conn) throws SQLException {
-				PreparedStatement stmt = null;
-				ResultSet resultSet = null;
-				
-				try {
-					// retreive all attributes from both Books and Authors tables
-					stmt = conn.prepareStatement(
-							"select authors.*, books.* " +
-							"  from authors, books " +
-							" where authors.author_id = books.author_id " +
-							"   and books.title = ?"
-					);
-					stmt.setString(1, title);
-					
-					List<Pair<Author, Book>> result = new ArrayList<Pair<Author,Book>>();
-					
-					resultSet = stmt.executeQuery();
-					
-					// for testing that a result was returned
-					Boolean found = false;
-					
-					while (resultSet.next()) {
-						found = true;
-						
-						// create new Author object
-						// retrieve attributes from resultSet starting with index 1
-						Author author = new Author();
-						loadAuthor(author, resultSet, 1);
-						
-						// create new Book object
-						// retrieve attributes from resultSet starting at index 4
-						Book book = new Book();
-						loadBook(book, resultSet, 4);
-						
-						result.add(new Pair<Author, Book>(author, book));
-					}
-					
-					// check if the title was found
-					if (!found) {
-						System.out.println("<" + title + "> was not found in the books table");
-					}
-					
-					return result;
-				} finally {
-					DBUtil.closeQuietly(resultSet);
-					DBUtil.closeQuietly(stmt);
-				}
-			}
-		});
-	}
+
 	
 	public<ResultType> ResultType executeTransaction(Transaction<ResultType> txn) {
 		try {
@@ -136,54 +84,42 @@ public class DerbyDatabase implements edu.ycp.cs320.booksdb.persist.IDatabase {
 		return conn;
 	}
 	
-	private void loadAuthor(Author author, ResultSet resultSet, int index) throws SQLException {
-		author.setAuthorId(resultSet.getInt(index++));
-		author.setLastname(resultSet.getString(index++));
-		author.setFirstname(resultSet.getString(index++));
+	private void loadUser(User user, ResultSet resultSet, int index) throws SQLException {
+		user.setUserId(resultSet.getInt(index++));
+		user.setLastname(resultSet.getString(index++));
+		user.setFirstname(resultSet.getString(index++));
+		user.setGender(resultSet.getString(index++));
+		user.setChild_gender(resultSet.getString(index++));
 	}
 	
-	private void loadBook(Book book, ResultSet resultSet, int index) throws SQLException {
-		book.setBookId(resultSet.getInt(index++));
-		book.setAuthorId(resultSet.getInt(index++));
-		book.setTitle(resultSet.getString(index++));
-		book.setIsbn(resultSet.getString(index++));
-		book.setPublished(resultSet.getInt(index++));		
-	}
+
 	
 	public void createTables() {
 		executeTransaction(new Transaction<Boolean>() {
 			@Override
 			public Boolean execute(Connection conn) throws SQLException {
 				PreparedStatement stmt1 = null;
-				PreparedStatement stmt2 = null;
+
 				
 				try {
 					stmt1 = conn.prepareStatement(
-						"create table authors (" +
-						"	author_id integer primary key " +
-						"		generated always as identity (start with 1, increment by 1), " +									
-						"	lastname varchar(40)," +
-						"	firstname varchar(40)" +
+						"create table users (" +
+						"	user_id integer primary key " +
+						"	generated always as identity (start with 1, increment by 1), " +
+						"	lastname varchar(40), " +
+						"	firstname varchar(40), " +
+						"   gender varchar(20), " +
+						"   child_gender varchar(20), " +
+						"   quiz_score integer, " +
+						"   prev_quiz_score integer " +
 						")"
 					);	
 					stmt1.executeUpdate();
 					
-					stmt2 = conn.prepareStatement(
-							"create table books (" +
-							"	book_id integer primary key " +
-							"		generated always as identity (start with 1, increment by 1), " +
-							"	author_id integer constraint author_id references authors, " +
-							"	title varchar(70)," +
-							"	isbn varchar(15)," +
-							"   published integer " +
-							")"
-					);
-					stmt2.executeUpdate();
-					
 					return true;
 				} finally {
 					DBUtil.closeQuietly(stmt1);
-					DBUtil.closeQuietly(stmt2);
+
 				}
 			}
 		});
@@ -193,47 +129,35 @@ public class DerbyDatabase implements edu.ycp.cs320.booksdb.persist.IDatabase {
 		executeTransaction(new Transaction<Boolean>() {
 			@Override
 			public Boolean execute(Connection conn) throws SQLException {
-				List<Author> authorList;
-				List<Book> bookList;
+				List<User> userList;
+
 				
 				try {
-					authorList = InitialData.getAuthors();
-					bookList = InitialData.getBooks();
+					userList = InitialData.getUser();
+
 				} catch (IOException e) {
 					throw new SQLException("Couldn't read initial data", e);
 				}
 
-				PreparedStatement insertAuthor = null;
-				PreparedStatement insertBook   = null;
+				PreparedStatement insertUser = null;
+
 
 				try {
 					// populate authors table (do authors first, since author_id is foreign key in books table)
-					insertAuthor = conn.prepareStatement("insert into authors (lastname, firstname) values (?, ?)");
-					for (Author author : authorList) {
+					insertUser = conn.prepareStatement("insert into user (lastname, firstname) values (?, ?)");
+					for (User user : userList) {
 //						insertAuthor.setInt(1, author.getAuthorId());	// auto-generated primary key, don't insert this
-						insertAuthor.setString(1, author.getLastname());
-						insertAuthor.setString(2, author.getFirstname());
-						insertAuthor.addBatch();
+						insertUser.setString(1, user.getLastname());
+						insertUser.setString(2, user.getFirstname());
+						insertUser.addBatch();
 					}
-					insertAuthor.executeBatch();
+					insertUser.executeBatch();
 					
-					// populate books table (do this after authors table,
-					// since author_id must exist in authors table before inserting book)
-					insertBook = conn.prepareStatement("insert into books (author_id, title, isbn, published) values (?, ?, ?, ?)");
-					for (Book book : bookList) {
-//						insertBook.setInt(1, book.getBookId());		// auto-generated primary key, don't insert this
-						insertBook.setInt(1, book.getAuthorId());
-						insertBook.setString(2, book.getTitle());
-						insertBook.setString(3, book.getIsbn());
-						insertBook.setInt(4,  book.getPublished());
-						insertBook.addBatch();
-					}
-					insertBook.executeBatch();
+
 					
 					return true;
 				} finally {
-					DBUtil.closeQuietly(insertBook);
-					DBUtil.closeQuietly(insertAuthor);
+					DBUtil.closeQuietly(insertUser);
 				}
 			}
 		});
