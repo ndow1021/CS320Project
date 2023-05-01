@@ -7,7 +7,7 @@ import edu.ycp.cs320.booksdb.model.Author;
 import edu.ycp.cs320.booksdb.model.Book;
 import edu.ycp.cs320.booksdb.model.Pair;
 import edu.ycp.cs320.booksdb.persist.DatabaseProvider;
-import edu.ycp.cs320.booksdb.persist.IDatabase;
+import edu.ycp.cs320.booksdb.persist.idatabase;
 
 public class AllBooksQuery {
 	public static void main(String[] args) throws Exception {
@@ -17,7 +17,7 @@ public class AllBooksQuery {
 		InitDatabase.init(keyboard);
 		
 		// get the DB instance and execute transaction
-		IDatabase db = DatabaseProvider.getInstance();
+		idatabase db = DatabaseProvider.getInstance();
 		List<Pair<Author, Book>> authorBookList = db.findAllBooksWithAuthors();
 		
 		// check if anything was returned and output the list

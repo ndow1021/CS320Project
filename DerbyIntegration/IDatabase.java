@@ -1,11 +1,10 @@
-package edu.ycp.cs320.booksdb.persist;
+package DerbyIntegration;
 
+import model.User;
 import java.util.List;
 
-import edu.ycp.cs320.booksdb.model.Author;
-import edu.ycp.cs320.booksdb.model.Book;
-import edu.ycp.cs320.booksdb.model.Pair;
-
 public interface IDatabase {
-	//public List<Pair<email, password>> findAuthorAndBookByTitle(String title);
+
+    public List<User> findAllUsers();
+
 }

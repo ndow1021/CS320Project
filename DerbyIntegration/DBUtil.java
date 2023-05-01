@@ -1,4 +1,4 @@
-package edu.ycp.cs320.booksdb.persist;
+package DerbyIntegration;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

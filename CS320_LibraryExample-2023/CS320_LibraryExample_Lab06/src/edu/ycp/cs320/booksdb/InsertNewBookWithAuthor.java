@@ -4,7 +4,7 @@ package edu.ycp.cs320.booksdb;
 import java.util.Scanner;
 
 import edu.ycp.cs320.booksdb.persist.DatabaseProvider;
-import edu.ycp.cs320.booksdb.persist.IDatabase;
+import edu.ycp.cs320.booksdb.persist.idatabase;
 
 public class InsertNewBookWithAuthor {
 	public static void main(String[] args) throws Exception {
@@ -29,13 +29,13 @@ public class InsertNewBookWithAuthor {
 		int published = keyboard.nextInt();
 		
 		// get the DB instance and execute the transaction
-		IDatabase db = DatabaseProvider.getInstance();
+		idatabase db = DatabaseProvider.getInstance();
 		Integer book_id = db.insertBookIntoBooksTable(title, isbn, published, lastName, firstName);
 
 		// check if the insertion succeeded
 		if (book_id > 0)
 		{
-			System.out.println("New book (ID: " + book_id + ") successfully added to Books table: <" + title + ">");
+			System.out.println("New book (ID: " + book_id + ") successfully added to Books table: <" +  + ">");
 		}
 		else
 		{
