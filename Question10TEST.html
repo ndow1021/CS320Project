@@ -5,7 +5,9 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="UTF-8">
     <title>Question 9 Page</title>
-
+    <script src=
+                    "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
 </head>
 <body>
 <div class="PageHeader">
@@ -32,17 +34,71 @@
 </div>
 
 <div class="questions">
-    <h3 class="title">9. I have been so unhappy that I have been crying</h3>
+    <h3 class="title">10. The thought of harming myself has occurred to me</h3>
 </div>
 
 <form>
-    <input type="radio" id="html" name="fav_language" value="HTML">
-    <label for="html" class="answer1">HTML</label><br>
-    <input type="radio" id="css" name="fav_language" value="CSS">
-    <label for="css" class="answer3">CSS</label><br>
-    <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-    <label for="javascript" class="answer2">JavaScript</label>
+    <fieldset>
+        <section id="9">
+        <legend>9. I have been so unhappy that I have been crying</legend>
+        <div>
+            <input type="radio" id="Q9Choice1" name="Q9Score" value=3 />
+            <label for="Q9Choice1">Yes, most of the time</label>
+            <input type="radio" id="Q9Choice2" name="Q9Score" value=2 />
+            <label for="Q9Choice2">Yes, quite often</label>
+            <input type="radio" id="Q9Choice3" name="Q9Score" value=1 />
+            <label for="Q9Choice3">Only occasionally</label>
+            <input type="radio" id="Q9Choice4" name="Q9Score" value=0 />
+            <label for="Q9Choice4">No, never</label>
+            <span id="flag0"></span>
+        </div>
+        </section>
+        <section id="10">
+            <legend>10. The thought of harming myself has occurred to me</legend>
+            <div>
+                <input type="radio" id="Q10Choice1" name="Q10Score" value=3 />
+                <label for="Q10Choice1">Yes, quite often</label>
+                <input type="radio" id="Q10Choice2" name="Q10Score" value=2 />
+                <label for="Q10Choice2">Sometimes</label>
+                <input type="radio" id="Q10Choice3" name="Q10Score" value=1 />
+                <label for="Q10Choice3">Hardly Ever</label>
+                <input type="radio" id="Q10Choice4" name="Q10Score" value=0 />
+                <label for="Q10Choice4">Never</label>
+                <span id="flag1"></span>
+            </div>
+        </section>
+        <div>
+
+            <button type="submit" onclick="myFunction()">Submit</button>
+        </div>
+    </fieldset>
 </form>
+<pre id="log"></pre>
+<script>
+
+    const form = document.querySelector("form");
+    const log = document.querySelector("#log");
+    var score = 0;
+    form.addEventListener(
+        "submit",
+        (event) => {
+            const data = new FormData(form);
+            let output = "";
+            for (const entry of data) {
+                output = `${output}${entry[0]}=${entry[1]}\r`;
+            }
+            log.innerText = output;
+            event.preventDefault();
+        },
+        false
+    );
+    function myFunction() {
+        var x = document.getElementById("Q10").value;
+        document.getElementById("Q10Score").innerHTML = x;
+    }
+
+
+</script>
 
 <div class="nextQuestion">
     <a href="Question10.html">Next Question</a>
